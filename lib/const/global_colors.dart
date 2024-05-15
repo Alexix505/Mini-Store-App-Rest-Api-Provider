@@ -1,10 +1,10 @@
 import 'dart:ui';
 
-const Color lightScaffoldColor = Color(0xfff8f8f8);
+const Color lightScaffoldColor = Color(0xFFF8F8F8);
 
-const lightCardColor = Color(0xffffffff);
+const lightCardColor = Color(0xFFFfFFFf);
 
-const lightBackgroudColor = Color(0xffd0e8f2);
+const lightBackgroudColor = Color(0xFFD0E8F2);
 
 const lightIconsColor = Color.fromARGB(255, 175, 0, 120);
 
