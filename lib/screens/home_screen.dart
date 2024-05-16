@@ -56,55 +56,93 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: TextField(
-                  controller: _controller,
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
+              const SizedBox(
+                height: 18,
+              ),
+              TextField(
+                controller: _controller,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: const BorderSide(color: Colors.black12),
+                  ),
+                  focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: const BorderSide(color: Colors.black12),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                        borderSide: BorderSide(
-                          width: 1,
-                          color: Theme.of(context).colorScheme.secondary,
-                        )),
-                    fillColor: Theme.of(context).cardColor,
-                    filled: true,
-                    hintText: 'Search',
-                    border: InputBorder.none,
-                    suffixIcon: const Icon(
-                      IconlyLight.search,
-                      color: lightIconsColor,
-                    ),
+                      borderSide: BorderSide(
+                        width: 1,
+                        color: Theme.of(context).colorScheme.secondary,
+                      )),
+                  fillColor: Theme.of(context).cardColor,
+                  filled: true,
+                  hintText: 'Search',
+                  border: InputBorder.none,
+                  suffixIcon: const Icon(
+                    IconlyLight.search,
+                    color: lightIconsColor,
                   ),
                 ),
               ),
-              SizedBox(
-                height: size.height * 0.25,
-                child: Swiper(
-                  control: SwiperControl(
-                    size: size.width * 0.04,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: size.height * 0.25,
+                        child: Swiper(
+                          control: SwiperControl(
+                            size: size.width * 0.04,
+                          ),
+                          autoplay: true,
+                          pagination: SwiperPagination(
+                            alignment: Alignment.bottomCenter,
+                            builder: DotSwiperPaginationBuilder(
+                              color: Colors.white,
+                              activeColor:
+                                  Theme.of(context).colorScheme.secondary,
+                            ),
+                          ),
+                          itemCount: 3,
+                          itemBuilder: (BuildContext ctx, index) {
+                            return const SalesWidget();
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                            const Text(
+                              "Latest Products",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const Spacer(),
+                            AppBarIcons(
+                                function: () {}, icon: IconlyBold.arrowRight2),
+                          ],
+                        ),
+                      ),
+                      GridView.builder(
+                        shrinkWrap: true,
+                        itemCount: 4,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          childAspectRatio: 0.6,
+                          crossAxisSpacing: 0,
+                          mainAxisSpacing: 0,
+                        ),
+                        itemBuilder: (context, index) {
+                          return const FeedWidget();
+                        },
+                      ),
+                    ],
                   ),
-                  pagination: SwiperPagination(
-                    alignment: Alignment.bottomCenter,
-                    builder: DotSwiperPaginationBuilder(
-                      color: Colors.white,
-                      activeColor: Theme.of(context).colorScheme.secondary,
-                    ),
-                  ),
-                  itemCount: 3,
-                  itemBuilder: (BuildContext ctx, index) {
-                    return const SalesWidget();
-                  },
                 ),
-              ),
-              SizedBox(
-                child: FeedWidget(),
-                width: 160,
-              ),
+              )
             ],
           ),
         ),
