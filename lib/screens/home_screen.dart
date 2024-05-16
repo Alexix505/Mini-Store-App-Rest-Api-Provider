@@ -101,7 +101,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              FeedWidget()
+              SizedBox(
+                child: FeedWidget(),
+                width: 160,
+              ),
             ],
           ),
         ),
