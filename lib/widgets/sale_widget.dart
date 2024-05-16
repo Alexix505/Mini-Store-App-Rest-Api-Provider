@@ -43,8 +43,7 @@ class SalesWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'Get the special '
-                        'discount',
+                        'Get the special discount',
                         style: TextStyle(
                           color: Colors.white,
                         ),

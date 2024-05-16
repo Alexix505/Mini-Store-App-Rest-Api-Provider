@@ -69,6 +69,12 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: size.height * 0.25,
                 child: Swiper(
+                  pagination: SwiperPagination(
+                    alignment: Alignment.bottomCenter,
+                    builder: DotSwiperPaginationBuilder(
+                        color: Colors.white,
+                        activeColor: Theme.of(context).colorScheme.secondary),
+                  ),
                   itemCount: 3,
                   itemBuilder: (BuildContext ctx, index) {
                     return const SalesWidget();
