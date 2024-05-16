@@ -69,11 +69,15 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: size.height * 0.25,
                 child: Swiper(
+                  control: SwiperControl(
+                    size: size.width * 0.04,
+                  ),
                   pagination: SwiperPagination(
                     alignment: Alignment.bottomCenter,
                     builder: DotSwiperPaginationBuilder(
-                        color: Colors.white,
-                        activeColor: Theme.of(context).colorScheme.secondary),
+                      color: Colors.white,
+                      activeColor: Theme.of(context).colorScheme.secondary,
+                    ),
                   ),
                   itemCount: 3,
                   itemBuilder: (BuildContext ctx, index) {
