@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:mini_store_app_with_restapi_and_provider/const/global_colors.dart';
+import 'package:mini_store_app_with_restapi_and_provider/widgets/feeds_widgets.dart';
 import '../widgets/appbar_icons.dart';
 import '../widgets/sale_widget.dart';
 import 'package:card_swiper/card_swiper.dart';
@@ -13,6 +14,20 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController _controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller;
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -44,6 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 child: TextField(
+                  controller: _controller,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -85,6 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
+              FeedWidget()
             ],
           ),
         ),

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SalesWidget extends StatelessWidget {
   const SalesWidget({super.key});
@@ -43,7 +41,7 @@ class SalesWidget extends StatelessWidget {
                   child: Column(
                     children: [
                       Text(
-                        'Get \nthe special discount',
+                        'Get the special discount',
                         style: TextStyle(
                           color: Colors.white,
                         ),
