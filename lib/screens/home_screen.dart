@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:mini_store_app_with_restapi_and_provider/const/global_colors.dart';
+import 'package:mini_store_app_with_restapi_and_provider/screens/users_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import '../widgets/appbar_icons.dart';
 import '../widgets/feeds_widget.dart';
@@ -58,7 +59,14 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           actions: [
             AppBarIcons(
-              function: () {},
+              function: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                      child: const UsersScreen(),
+                      type: PageTransitionType.fade),
+                );
+              },
               icon: IconlyBold.user3,
             ),
           ],
@@ -150,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 0.6,
+                          childAspectRatio: 0.7,
                           crossAxisSpacing: 0,
                           mainAxisSpacing: 0,
                         ),

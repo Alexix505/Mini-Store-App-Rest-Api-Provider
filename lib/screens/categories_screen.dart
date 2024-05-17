@@ -19,12 +19,12 @@ class CategoriesScreen extends StatelessWidget {
         itemCount: 4,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.6,
+          childAspectRatio: 0.9,
           crossAxisSpacing: 0,
           mainAxisSpacing: 1.2,
         ),
         itemBuilder: (context, index) {
-          return const CategoryWidget();
+          return CategoryWidget();
         },
       ),
     );
