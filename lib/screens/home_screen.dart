@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:mini_store_app_with_restapi_and_provider/const/global_colors.dart';
-import 'package:mini_store_app_with_restapi_and_provider/widgets/feeds_widgets.dart';
 import 'package:page_transition/page_transition.dart';
 import '../widgets/appbar_icons.dart';
+import '../widgets/feeds_widget.dart';
 import '../widgets/sale_widget.dart';
 import 'package:card_swiper/card_swiper.dart';
 
+import 'categories_screen.dart';
 import 'feeds_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,7 +46,14 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 4,
           title: const Text('Home'),
           leading: AppBarIcons(
-            function: () {},
+            function: () {
+              Navigator.push(
+                context,
+                PageTransition(
+                    child: const CategoriesScreen(),
+                    type: PageTransitionType.fade),
+              );
+            },
             icon: IconlyBold.category,
           ),
           actions: [
@@ -147,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisSpacing: 0,
                         ),
                         itemBuilder: (context, index) {
-                          return const FeedWidget();
+                          return const FeedsWidget();
                         },
                       ),
                     ],
