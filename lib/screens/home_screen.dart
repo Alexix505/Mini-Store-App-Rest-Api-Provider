@@ -75,30 +75,30 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              const SizedBox(
-                height: 18,
-              ),
-              TextField(
-                controller: _controller,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: const BorderSide(color: Colors.black12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 14),
+                child: TextField(
+                  controller: _controller,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        width: 1,
-                        color: Theme.of(context).colorScheme.secondary,
-                      )),
-                  fillColor: Theme.of(context).cardColor,
-                  filled: true,
-                  hintText: 'Search',
-                  border: InputBorder.none,
-                  suffixIcon: const Icon(
-                    IconlyLight.search,
-                    color: lightIconsColor,
+                      borderSide: const BorderSide(color: Colors.black12),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide(
+                          width: 1,
+                          color: Theme.of(context).colorScheme.secondary,
+                        )),
+                    fillColor: Theme.of(context).cardColor,
+                    filled: true,
+                    hintText: 'Search',
+                    border: InputBorder.none,
+                    suffixIcon: const Icon(
+                      IconlyLight.search,
+                      color: lightIconsColor,
+                    ),
                   ),
                 ),
               ),

@@ -24,7 +24,7 @@ class CategoriesScreen extends StatelessWidget {
           mainAxisSpacing: 1.2,
         ),
         itemBuilder: (context, index) {
-          return CategoryWidget();
+          return const CategoryWidget();
         },
       ),
     );
