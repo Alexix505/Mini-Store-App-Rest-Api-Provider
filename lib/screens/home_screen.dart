@@ -4,7 +4,7 @@ import 'package:mini_store_app_with_restapi_and_provider/const/global_colors.dar
 import 'package:mini_store_app_with_restapi_and_provider/screens/users_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import '../widgets/appbar_icons.dart';
-import '../widgets/feeds_widget.dart';
+import '../widgets/feeds_grid.dart';
 import '../widgets/sale_widget.dart';
 import 'package:card_swiper/card_swiper.dart';
 
@@ -152,20 +152,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      GridView.builder(
-                        shrinkWrap: true,
-                        itemCount: 4,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          childAspectRatio: 0.7,
-                          crossAxisSpacing: 0,
-                          mainAxisSpacing: 0,
-                        ),
-                        itemBuilder: (context, index) {
-                          return const FeedsWidget();
-                        },
-                      ),
+                      // GridView.builder(
+                      //   shrinkWrap: true,
+                      //   itemCount: 4,
+                      //   gridDelegate:
+                      //       const SliverGridDelegateWithFixedCrossAxisCount(
+                      //     crossAxisCount: 2,
+                      //     childAspectRatio: 0.7,
+                      //     crossAxisSpacing: 0,
+                      //     mainAxisSpacing: 0,
+                      //   ),
+                      //   itemBuilder: (context, index) {
+                      //     return const FeedsWidget();
+                      //   },
+                      // ),
+                      const FeedsGridWidget(),
                     ],
                   ),
                 ),

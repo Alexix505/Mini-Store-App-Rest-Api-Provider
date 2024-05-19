@@ -55,9 +55,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                         Flexible(
                           flex: 1,
                           child: RichText(
-                            text: TextSpan(
+                            text: const TextSpan(
                                 text: '\$',
-                                style: const TextStyle(
+                                style: TextStyle(
                                     fontSize: 25,
                                     color: Color.fromRGBO(33, 150, 243, 1)),
                                 children: <TextSpan>[
