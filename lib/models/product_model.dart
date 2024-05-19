@@ -32,4 +32,11 @@ class ProductsModel {
         ? CategoriesModel.fromJson(json['category'])
         : null;
   }
+
+  static List<ProductsModel> productsFromSnapshot(List productSnapshot) {
+    print("data ${productSnapshot[0]}");
+    return productSnapshot.map((data) {
+      return ProductsModel.fromJson(data);
+    }).toList();
+  }
 }

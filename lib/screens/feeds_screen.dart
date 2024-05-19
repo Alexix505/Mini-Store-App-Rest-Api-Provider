@@ -13,7 +13,9 @@ class FeedsScreen extends StatelessWidget {
         elevation: 4,
         title: const Text('All Products'),
       ),
-      body: const FeedsGridWidget(),
+      body: const FeedsGridWidget(
+        productList: [],
+      ),
       // GridView.builder(
       //   shrinkWrap: true,
       //   itemCount: 4,

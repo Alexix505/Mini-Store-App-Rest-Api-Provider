@@ -4,6 +4,7 @@ import 'package:mini_store_app_with_restapi_and_provider/const/global_colors.dar
 import 'package:mini_store_app_with_restapi_and_provider/screens/users_screen.dart';
 import 'package:mini_store_app_with_restapi_and_provider/services/api_handler.dart';
 import 'package:page_transition/page_transition.dart';
+import '../models/product_model.dart';
 import '../widgets/appbar_icons.dart';
 import '../widgets/feeds_grid.dart';
 import '../widgets/sale_widget.dart';
@@ -21,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _controller = TextEditingController();
+  List<ProductsModel> productList = [];
 
   @override
   void initState() {
@@ -36,8 +38,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void didChangeDependencies() {
-    APIHandler.getAllProducts();
+    getProducts();
     super.didChangeDependencies();
+  }
+
+  Future<void> getProducts() async {
+    final productsList = await APIHandler.getAllProducts();
   }
 
   @override
@@ -159,21 +165,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      // GridView.builder(
-                      //   shrinkWrap: true,
-                      //   itemCount: 4,
-                      //   gridDelegate:
-                      //       const SliverGridDelegateWithFixedCrossAxisCount(
-                      //     crossAxisCount: 2,
-                      //     childAspectRatio: 0.7,
-                      //     crossAxisSpacing: 0,
-                      //     mainAxisSpacing: 0,
-                      //   ),
-                      //   itemBuilder: (context, index) {
-                      //     return const FeedsWidget();
-                      //   },
-                      // ),
-                      const FeedsGridWidget(),
+                      FeedsGridWidget(
+                        productList: productList,
+                      ),
                     ],
                   ),
                 ),

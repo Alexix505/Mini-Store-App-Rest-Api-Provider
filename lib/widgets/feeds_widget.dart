@@ -7,7 +7,8 @@ import '../const/global_colors.dart';
 import '../screens/product_details.dart';
 
 class FeedsWidget extends StatelessWidget {
-  const FeedsWidget({super.key});
+  const FeedsWidget({super.key, required this.title, required this.imageUrl});
+  final String title, imageUrl;
 
   @override
   Widget build(BuildContext context) {
