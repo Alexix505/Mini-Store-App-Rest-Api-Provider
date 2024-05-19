@@ -15,14 +15,4 @@ class CategoriesModel {
     creationAt = json['creationAt'];
     updatedAt = json['updatedAt'];
   }
-
-// Map<String, dynamic> toJson() {
-//   final Map<String, dynamic> data = {};
-//   data['id'] = this.id;
-//   data['name'] = this.name;
-//   data['image'] = this.image;
-//   data['creationAt'] = this.creationAt;
-//   data['updatedAt'] = this.updatedAt;
-//   return data;
-// }
 }

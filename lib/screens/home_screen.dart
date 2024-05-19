@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:mini_store_app_with_restapi_and_provider/const/global_colors.dart';
 import 'package:mini_store_app_with_restapi_and_provider/screens/users_screen.dart';
+import 'package:mini_store_app_with_restapi_and_provider/services/api_handler.dart';
 import 'package:page_transition/page_transition.dart';
 import '../widgets/appbar_icons.dart';
 import '../widgets/feeds_grid.dart';
@@ -31,6 +32,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void dispose() {
     _controller.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    APIHandler.getAllProducts();
+    super.didChangeDependencies();
   }
 
   @override
