@@ -24,10 +24,10 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _controller = TextEditingController();
   List<ProductsModel> productList = [];
 
-  Future<void> getProducts() async {
-    productList = await APIHandler.getAllProducts();
-    setState(() {});
-  }
+  // Future<void> getProducts() async {
+  //   productList = await APIHandler.getAllProducts();
+  //   setState(() {});
+  // }
 
   @override
   void initState() {
@@ -41,11 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
-  @override
-  void didChangeDependencies() {
-    getProducts();
-    super.didChangeDependencies();
-  }
+  // @override
+  // void didChangeDependencies() {
+  //   getProducts();
+  //   super.didChangeDependencies();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -166,11 +166,29 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      productList.isEmpty
-                          ? Container()
-                          : FeedsGridWidget(
-                              productList: productList,
-                            ),
+                      FutureBuilder<List<ProductsModel>>(
+                        future: APIHandler.getAllProducts(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          } else if (snapshot.hasError) {
+                            Center(
+                              child: Text('Am Error Occured ${snapshot.error}'),
+                            );
+                          } else if (snapshot.data == null) {
+                            const Center(
+                              child: Text(
+                                'No Product has been added yet',
+                              ),
+                            );
+                          }
+
+                          return FeedsGridWidget(productList: snapshot.data!);
+                        },
+                      )
                     ],
                   ),
                 ),
