@@ -24,6 +24,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _controller = TextEditingController();
   List<ProductsModel> productList = [];
 
+  Future<void> getProducts() async {
+    productList = await APIHandler.getAllProducts();
+    setState(() {});
+  }
+
   @override
   void initState() {
     super.initState();
@@ -40,10 +45,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void didChangeDependencies() {
     getProducts();
     super.didChangeDependencies();
-  }
-
-  Future<void> getProducts() async {
-    final productsList = await APIHandler.getAllProducts();
   }
 
   @override
@@ -165,9 +166,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      FeedsGridWidget(
-                        productList: productList,
-                      ),
+                      productList.isEmpty
+                          ? Container()
+                          : FeedsGridWidget(
+                              productList: productList,
+                            ),
                     ],
                   ),
                 ),

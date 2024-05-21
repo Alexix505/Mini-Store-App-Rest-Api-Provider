@@ -68,15 +68,15 @@ class FeedsWidget extends StatelessWidget {
                     color: Colors.red,
                     size: 28,
                   ),
-                  imageUrl: "https://i.ibb.co/vwB46Yq/shoes.png",
+                  imageUrl: 'imageUrl',
                   boxFit: BoxFit.fill,
                 ),
               ),
               const SizedBox(height: 10),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Title",
+                  title,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: TextStyle(
