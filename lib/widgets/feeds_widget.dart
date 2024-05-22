@@ -1,17 +1,22 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:mini_store_app_with_restapi_and_provider/models/product_model.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:provider/provider.dart';
 
 import '../const/global_colors.dart';
 import '../screens/product_details.dart';
 
 class FeedsWidget extends StatelessWidget {
-  const FeedsWidget({super.key, required this.title, required this.imageUrl});
-  final String title, imageUrl;
+  const FeedsWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final ProductsModel productsModelProvider =
+        Provider.of<ProductsModel>(context);
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.all(2.0),
@@ -39,14 +44,14 @@ class FeedsWidget extends StatelessWidget {
                   children: [
                     Flexible(
                       child: RichText(
-                        text: const TextSpan(
+                        text: TextSpan(
                           text: '\$',
-                          style:
-                              TextStyle(color: Color.fromRGBO(33, 150, 243, 1)),
+                          style: const TextStyle(
+                              color: Color.fromRGBO(33, 150, 243, 1)),
                           children: <TextSpan>[
                             TextSpan(
-                                text: "168.00",
-                                style: TextStyle(
+                                text: "${productsModelProvider.price}",
+                                style: const TextStyle(
                                     color: lightTextColor,
                                     fontWeight: FontWeight.w600)),
                           ],
@@ -68,7 +73,7 @@ class FeedsWidget extends StatelessWidget {
                     color: Colors.red,
                     size: 28,
                   ),
-                  imageUrl: 'imageUrl',
+                  imageUrl: productsModelProvider.images![0],
                   boxFit: BoxFit.fill,
                 ),
               ),
@@ -76,10 +81,10 @@ class FeedsWidget extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  title,
+                  productsModelProvider.title.toString(),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 17,
                     //  fontFamily: 'Roboto',
                     fontWeight: FontWeight.w700,

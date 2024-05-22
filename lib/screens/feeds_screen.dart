@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/product_model.dart';
 import '../services/api_handler.dart';
-import '../widgets/feeds_grid.dart';
 import '../widgets/feeds_widget.dart';
 
 class FeedsScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class FeedsScreen extends StatefulWidget {
 }
 
 class _FeedsScreenState extends State<FeedsScreen> {
-  late final List<ProductsModel> productList;
+  late List<ProductsModel> productList;
 
   @override
   void didChangeDependencies() {
@@ -50,10 +50,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
                     mainAxisSpacing: 0,
                   ),
                   itemBuilder: (context, index) {
-                    return FeedsWidget(
-                      title: productList[index].title.toString(),
-                      imageUrl: productList[index].images![0],
-                    );
+                    return ChangeNotifierProvider.value(
+                        value: productList[0], child: const FeedsWidget());
                   },
                 ),
     );
