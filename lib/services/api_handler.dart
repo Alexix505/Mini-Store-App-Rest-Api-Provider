@@ -5,6 +5,7 @@ import 'package:mini_store_app_with_restapi_and_provider/const/api_consts.dart';
 import 'package:mini_store_app_with_restapi_and_provider/models/categories_model.dart';
 
 import '../models/product_model.dart';
+import '../models/users_model.dart';
 
 class APIHandler {
   static Future<List<dynamic>> getData({required String target}) async {
@@ -52,5 +53,10 @@ class APIHandler {
   static Future<List<CategoriesModel>> getAllCategories() async {
     List temp = await getData(target: "categories");
     return CategoriesModel.categoriesFromSnapshot(temp);
+  }
+
+  static Future<List<UsersModel>> getAllUsers() async {
+    List temp = await getData(target: "users");
+    return UsersModel.allUsersFromSnapshot(temp);
   }
 }

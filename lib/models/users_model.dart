@@ -31,7 +31,7 @@ class UsersModel with ChangeNotifier {
     updatedAt = json['updatedAt'];
   }
 
-  static List<UsersModel> productsFromSnapshot(List productSnapshot) {
+  static List<UsersModel> allUsersFromSnapshot(List productSnapshot) {
     print("data ${productSnapshot[0]}");
     return productSnapshot.map((data) {
       return UsersModel.fromJson(data);
