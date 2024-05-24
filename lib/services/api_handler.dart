@@ -7,16 +7,12 @@ import 'package:mini_store_app_with_restapi_and_provider/models/categories_model
 import '../models/product_model.dart';
 
 class APIHandler {
-  static Future<List<ProductsModel>> getAllProducts() async {
-    var uri = Uri.https(BASE_URL, 'api/v1/products');
+  static Future<List<dynamic>> getData({required String target}) async {
+    var uri = Uri.https(BASE_URL, 'api/v1/$target');
 
     var response = await http.get(
       uri,
     );
-
-    // final response = await http.get(Uri.parse("https://api.escuelajs.co/api/v1/products"));
-
-    // print('response ${jsonDecode(response.body)}');
 
     var data = jsonDecode(response.body);
     var tempList = [];
@@ -25,27 +21,36 @@ class APIHandler {
       tempList.add(v);
       // print('v $v \n\n');
     }
-    return ProductsModel.productsFromSnapshot(tempList);
+    return tempList;
+  }
+
+  static Future<List<ProductsModel>> getAllProducts() async {
+    List temp = await getData(target: "products");
+
+    return ProductsModel.productsFromSnapshot(temp);
+
+    // var uri = Uri.https(BASE_URL, 'api/v1/products');
+
+    // var response = await http.get(
+    //   uri,
+    // );
+
+    // // final response = await http.get(Uri.parse("https://api.escuelajs.co/api/v1/products"));
+
+    // // print('response ${jsonDecode(response.body)}');
+
+    // var data = jsonDecode(response.body);
+    // var tempList = [];
+
+    // for (var v in data) {
+    //   tempList.add(v);
+    // print('v $v \n\n');
+    // }
+    // return ProductsModel.productsFromSnapshot(tempList);
   }
 
   static Future<List<CategoriesModel>> getAllCategories() async {
-    var uri = Uri.https(BASE_URL, 'api/v1/categories');
-
-    var response = await http.get(
-      uri,
-    );
-
-    // final response = await http.get(Uri.parse("https://api.escuelajs.co/api/v1/products"));
-
-    // print('response ${jsonDecode(response.body)}');
-
-    var data = jsonDecode(response.body);
-    var tempList = [];
-
-    for (var v in data) {
-      tempList.add(v);
-      // print('v $v \n\n');
-    }
-    return CategoriesModel.categoriesFromSnapshot(tempList);
+    List temp = await getData(target: "categories");
+    return CategoriesModel.categoriesFromSnapshot(temp);
   }
 }
