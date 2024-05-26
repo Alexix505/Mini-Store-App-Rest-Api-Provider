@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:card_swiper/card_swiper.dart';
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,13 @@ class _ProductDetailsState extends State<ProductDetails> {
   ProductsModel? productsModel;
 
   Future<void> getProductInfo() async {
-    productsModel = await APIHandler.getProductById(id: widget.id);
+    try {
+      productsModel = await APIHandler.getProductById(id: widget.id);
+    } catch (e) {
+      log(
+        'error occured $e',
+      );
+    }
     setState(() {});
   }
 
@@ -51,7 +59,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            productsModel!.category.toString(),
+                            productsModel!.category!.name.toString(),
                             style: const TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.w500),
                           ),

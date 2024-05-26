@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   Theme.of(context).colorScheme.secondary,
                             ),
                           ),
-                          itemCount: 3,
+                          itemCount: 4,
                           itemBuilder: (BuildContext ctx, index) {
                             return const SalesWidget();
                           },
