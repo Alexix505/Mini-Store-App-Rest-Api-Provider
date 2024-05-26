@@ -36,7 +36,7 @@ class UsersScreen extends StatelessWidget {
             }
 
             return ListView.builder(
-                itemCount: 5,
+                itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   return ChangeNotifierProvider.value(
                     value: snapshot.data![index],
