@@ -89,7 +89,7 @@ class FeedsWidget extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 17,
                     //  fontFamily: 'Roboto',
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),

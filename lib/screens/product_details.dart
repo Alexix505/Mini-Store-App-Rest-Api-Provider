@@ -19,13 +19,18 @@ class ProductDetails extends StatefulWidget {
 class _ProductDetailsState extends State<ProductDetails> {
   final titleStyle = const TextStyle(fontSize: 24, fontWeight: FontWeight.bold);
   ProductsModel? productsModel;
+  // bool isError = false;
+  // String errorStr = " ";
 
   Future<void> getProductInfo() async {
     try {
       productsModel = await APIHandler.getProductById(id: widget.id);
     } catch (e) {
+      // isError = true;
+      // errorStr = e.toString();
+
       log(
-        'error occured $e',
+        'error occurred $e',
       );
     }
     setState(() {});

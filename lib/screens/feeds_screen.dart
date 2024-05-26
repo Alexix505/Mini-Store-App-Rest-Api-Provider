@@ -13,7 +13,7 @@ class FeedsScreen extends StatefulWidget {
 }
 
 class _FeedsScreenState extends State<FeedsScreen> {
-  late List<ProductsModel> productList;
+  late List<ProductsModel> productList = [];
 
   @override
   void didChangeDependencies() {
@@ -39,19 +39,23 @@ class _FeedsScreenState extends State<FeedsScreen> {
           //   productList: [],
           // ),
           productList.isEmpty
-              ? Container()
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
               : GridView.builder(
-                  shrinkWrap: true,
+                  // shrinkWrap: true,
                   itemCount: productList.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 0.6,
+                    childAspectRatio: 0.65,
                     crossAxisSpacing: 0,
                     mainAxisSpacing: 0,
                   ),
                   itemBuilder: (context, index) {
                     return ChangeNotifierProvider.value(
-                        value: productList[0], child: const FeedsWidget());
+                      value: productList[index],
+                      child: const FeedsWidget(),
+                    );
                   },
                 ),
     );
