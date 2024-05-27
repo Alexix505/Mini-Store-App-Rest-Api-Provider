@@ -9,9 +9,7 @@ import '../const/global_colors.dart';
 import '../screens/product_details.dart';
 
 class FeedsWidget extends StatelessWidget {
-  const FeedsWidget({
-    super.key,
-  });
+  const FeedsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
